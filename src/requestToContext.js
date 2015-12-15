@@ -18,7 +18,7 @@ module.exports = function requestToContext(req) {
         Object.keys(queryMap).forEach(function(key) {
             var arg = queryMap[key];
 
-            if (parseArgs[key] && arg) {
+            if (parseArgs[key] && arg != null && Object.prototype.toString.call(arg) !== "[object Array]") {
                 context[key] = JSON.parse(arg);
             } else {
                 context[key] = arg;
